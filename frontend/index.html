@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DHCP Simulator Dashboard</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<h1>DHCP Simulator</h1>
+
+<!-- Login Section -->
+<div id="loginSection">
+  <h2>WiFi Login</h2>
+  <input type="text" id="ssid" placeholder="WiFi SSID">
+  <input type="password" id="password" placeholder="WiFi Password">
+  <button onclick="login()">Login</button>
+  <p id="loginMessage"></p>
+</div>
+
+<!-- Dashboard Section -->
+<div id="dashboard" style="display:none;">
+
+  <h2>Current Leases</h2>
+  <ul id="leasesList"></ul>
+
+  <h2>DHCP Logs</h2>
+  <ul id="logsList"></ul>
+</div>
+
+<script>
+const backendUrl = 'http://localhost:3000/api/dhcp';
+
+// Hardcoded WiFi credentials (matches wifi_auth.sh)
+const VALID_SSID = "mywifi";
+const VALID_PASSWORD = "12345678";
+
+// Login function
+function login() {
+  const ssid = document.getElementById('ssid').value;
+  const password = document.getElementById('password').value;
+  const msg = document.getElementById('loginMessage');
+
+  if(ssid === VALID_SSID && password === VALID_PASSWORD) {
+    msg.textContent = "Login successful!";
+    document.getElementById('loginSection').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    fetchLeases();
+    fetchLogs();
+    setInterval(() => { fetchLeases(); fetchLogs(); }, 5000);
+  } else {
+    msg.textContent = "Login failed! Try again.";
+  }
+}
+
+// Fetch current leases
+async function fetchLeases() {
+  const res = await fetch(`${backendUrl}/leases`);
+  const data = await res.json();
+  const leasesList = document.getElementById('leasesList');
+  leasesList.innerHTML = '';
+  for (let client in data) {
+    const li = document.createElement('li');
+    li.textContent = `${client} → ${data[client]}`;
+    leasesList.appendChild(li);
+  }
+}
+
+// Fetch DHCP logs
+async function fetchLogs() {
+  const res = await fetch(`${backendUrl}/logs`);
+  const data = await res.json();
+  const logsList = document.getElementById('logsList');
+  logsList.innerHTML = '';
+  data.logs.forEach(line => {
+    const li = document.createElement('li');
+    li.textContent = line;
+    logsList.appendChild(li);
+  });
+}
+
+</script>
+</body>
+</html>

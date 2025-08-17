@@ -33,6 +33,8 @@ dhcp-simulator/
 
 Install `jq`:
 
+## Start DHCP serverand add client
+
 ```bash
 sudo apt update
 sudo apt install jq -y
@@ -67,4 +69,28 @@ cat logs/auth.log
 Current Leases
 ```bash
 cat scripts/ip_pool.json
+```
+## Start backend
+```bash
+
+cd backend
+npm install
+node app.js
+
+```
+
+## Open Frontend
+Write following commands
+``` bash
+npm install -g live-server
+cd frontend
+live-server
+
+```
+### Wifi Login 
+``` bash
+SSID: mywifi
+
+Password: 12345678
+
 ```

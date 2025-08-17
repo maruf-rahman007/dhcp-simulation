@@ -1,0 +1,117 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
+/* Login Section */
+#loginSection {
+    width: 350px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+#loginSection input[type="text"],
+#loginSection input[type="password"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#loginSection button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#loginSection button:hover {
+    background-color: #2980b9;
+}
+
+#loginMessage {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+/* Dashboard */
+#dashboard {
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+#dashboard div {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#clientId {
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+#dashboard button {
+    padding: 10px 20px;
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#dashboard button:hover {
+    background-color: #27ae60;
+}
+
+/* Panels */
+h2 {
+    color: #34495e;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #ecf0f1;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: monospace;
+    color: #2c3e50;
+}
+
+/* Scrollable logs */
+#logsList {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fafafa;
+}
