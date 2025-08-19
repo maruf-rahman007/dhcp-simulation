@@ -51,7 +51,7 @@ Install `jq`:
 sudo apt update
 sudo apt install jq -y
 chmod +x scripts/*.sh
-./scripts/dhcp_client.sh client1
+./scripts/dhcp_client.sh <clientname>
 ```
 
 #### Enter WiFi credentials
