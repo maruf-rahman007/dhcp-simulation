@@ -8,19 +8,31 @@ It mimics the DHCP handshake (Discover → Offer → Request → Ack) and requir
 
 ## 📂 Project Structure (till now)
 ```bash 
-dhcp-simulator/
-│── scripts/                  
-│   ├── dhcp_server.sh        # DHCP server simulation
-│   ├── dhcp_client.sh        # Client script requesting IP
-│   ├── wifi_auth.sh          # WiFi login simulation (SSID + password)
-│   ├── utils.sh              # Helper functions (IP pool & leases)
-│   └── ip_pool.json          # Stores subnet, IP range & assigned leases
+dhcp-simulation/
 │
-├── logs/
-│   ├── dhcp.log              # Logs DHCP handshakes
-│   └── auth.log              # Logs WiFi authentication attempts
+├── scripts/                  # All Bash scripts (core simulation)
+│   ├── dhcp_server.sh        # DHCP server simulation logic
+│   ├── dhcp_client.sh        # DHCP client simulation script
+│   ├── wifi_auth.sh          # WiFi SSID/password simulation
+│   ├── ip_pool.json          # IP pool & lease file (JSON/CSV)
+│   └── utils.sh              # Common functions (logging, validation etc.)
 │
-└── README.md                 # Documentation
+├── backend/                  # Web server backend
+│   ├── app.js                # Flask backend (Python)
+│   ├── routes/               # API endpoints
+│   │   ├── dhcp.js           # APIs to fetch DHCP logs, leases
+├── frontend/                 # Web UI
+│   ├── index.html            # UI homepage
+│   ├── js/                   # Frontend logic
+│   │   └── main.js           # Fetch API + show logs/leases dynamically
+│   ├── css/                  # Styles (Tailwind or Bootstrap)
+│   │   └── styles.css
+│
+├── logs/                     # Store simulation logs
+│   ├── dhcp.log              # Server logs of requests
+│   └── auth.log              # WiFi authentication logs
+│
+
 
 
 ---
